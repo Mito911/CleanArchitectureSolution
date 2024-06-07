@@ -62,3 +62,4 @@ namespace CleanArchitectureSolution.Tests.Services
         }
     }
 }
+

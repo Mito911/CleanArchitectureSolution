@@ -21,5 +21,9 @@ namespace Application.Services
         {
             _productRepository.AddProduct(product);
         }
+        public async Task CreateProductAsync(Product product)
+        {
+            await _productRepository.AddProductAsync(product);
+        }
     }
 }

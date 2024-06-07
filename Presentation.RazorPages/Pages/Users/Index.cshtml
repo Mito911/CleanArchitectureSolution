@@ -1,0 +1,29 @@
+﻿@page
+@model Presentation.RazorPages.Pages.Users.IndexModel
+
+<h2>Users</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>@item.Username</td>
+                <td>@item.Role</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

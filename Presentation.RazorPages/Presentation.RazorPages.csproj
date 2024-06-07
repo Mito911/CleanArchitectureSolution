@@ -31,8 +31,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\CleanArchitectureSolution.Tests\CleanArchitectureSolution.Tests.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Presentation.RESTAPI\Presentation.RESTAPI.csproj" />
   </ItemGroup>
 
 </Project>

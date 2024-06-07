@@ -19,7 +19,34 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation.RESTAPI", "Pre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation.RazorPages", "Presentation.RazorPages\Presentation.RazorPages.csproj", "{DD5FB8BC-F6B3-4B00-9ED5-23E681D09129}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitectureSolution.Tests", "CleanArchitectureSolution.Tests\CleanArchitectureSolution.Tests.csproj", "{8BD6CA87-2925-4459-9F20-8E2D73A8CA4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitectureSolution.Tests", "CleanArchitectureSolution.Tests\CleanArchitectureSolution.Tests.csproj", "{8BD6CA87-2925-4459-9F20-8E2D73A8CA4D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFService1(1)", "WCFService1\", "{A5F393AF-C066-4CFA-B2F2-312FA747AC22}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62734"
+		Debug.AspNetCompiler.PhysicalPath = "WCFService1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62734\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62734"
+		Release.AspNetCompiler.PhysicalPath = "WCFService1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62734\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62734"
+		SlnRelativePath = "WCFService1\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "Elementy rozwiązania", "{0B3A82A2-5D41-4AF6-A4A0-009C706E82A9}"
+	ProjectSection(SolutionItems) = preProject
+		test_endpoints.sh = test_endpoints.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +86,10 @@ Global
 		{8BD6CA87-2925-4459-9F20-8E2D73A8CA4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD6CA87-2925-4459-9F20-8E2D73A8CA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BD6CA87-2925-4459-9F20-8E2D73A8CA4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F393AF-C066-4CFA-B2F2-312FA747AC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F393AF-C066-4CFA-B2F2-312FA747AC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F393AF-C066-4CFA-B2F2-312FA747AC22}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F393AF-C066-4CFA-B2F2-312FA747AC22}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,8 +2,8 @@ using Application.Services;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Presentation.RazorPages.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +11,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("CleanArchitectureDb"));
 
-// Dodaj us³ugi do kontenera
-builder.Services.AddRazorPages(); // Dodaj Razor Pages
+// Dodaj Razor Pages
+builder.Services.AddRazorPages();
+
+// Dodaj uwierzytelnianie i autoryzacjê
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+});
 
 // Dodaj zale¿noœci
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -24,19 +36,21 @@ builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 
-// Skonfiguruj potok obs³ugi ¿¹dañ HTTP
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
+app.UseRouting();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
-// Dodaj middleware obs³uguj¹cy nag³ówki HTTP
-app.UseHttpHeadersMiddleware();
-
 app.MapRazorPages();
+app.MapControllers();  
 
 app.Run();

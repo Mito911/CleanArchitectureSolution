@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities
 {
     public class User
     {
         public int Id { get; set; }
+
+        [Required]
         public string Username { get; set; }
+
+        [Required]
         public string Password { get; set; }
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
+
+        [Required]
+        public string Role { get; set; }  
     }
 }
 

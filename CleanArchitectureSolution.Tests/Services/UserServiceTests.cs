@@ -3,6 +3,7 @@ using Core.Entities;
 using Core.Interfaces;
 using Moq;
 using Xunit;
+using System.Threading.Tasks;
 
 namespace CleanArchitectureSolution.Tests.Services
 {
@@ -18,15 +19,15 @@ namespace CleanArchitectureSolution.Tests.Services
         }
 
         [Fact]
-        public void GetUser_ShouldReturnUser_WhenUserExists()
+        public async Task GetUser_ShouldReturnUser_WhenUserExists()
         {
             // Arrange
             var userId = 1;
             var user = new User { Id = userId, Username = "Test User", Password = "password" };
-            _mockUserRepository.Setup(repo => repo.GetUserById(userId)).Returns(user);
+            _mockUserRepository.Setup(repo => repo.GetUserByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = _userService.GetUser(userId);
+            var result = await _userService.GetUser(userId);
 
             // Assert
             Assert.NotNull(result);
@@ -34,32 +35,34 @@ namespace CleanArchitectureSolution.Tests.Services
         }
 
         [Fact]
-        public void GetUser_ShouldReturnNull_WhenUserDoesNotExist()
+        public async Task GetUser_ShouldReturnNull_WhenUserDoesNotExist()
         {
             // Arrange
             var userId = 1;
-            _mockUserRepository.Setup(repo => repo.GetUserById(userId)).Returns((User)null);
+            _mockUserRepository.Setup(repo => repo.GetUserByIdAsync(userId)).ReturnsAsync((User)null);
 
             // Act
-            var result = _userService.GetUser(userId);
+            var result = await _userService.GetUser(userId);
 
             // Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public void CreateUser_ShouldAddUser()
+        public async Task CreateUser_ShouldAddUser()
         {
             // Arrange
             var user = new User { Id = 1, Username = "Test User", Password = "password" };
-            _mockUserRepository.Setup(repo => repo.AddUser(user));
+            _mockUserRepository.Setup(repo => repo.AddUserAsync(user)).Returns(Task.CompletedTask);
 
             // Act
-            _userService.CreateUser(user);
+            await _userService.CreateUser(user);
 
             // Assert
-            _mockUserRepository.Verify(repo => repo.AddUser(user), Times.Once);
+            _mockUserRepository.Verify(repo => repo.AddUserAsync(user), Times.Once);
         }
     }
 }
+
+
 

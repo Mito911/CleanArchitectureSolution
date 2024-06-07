@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Interfaces;
+using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -12,16 +13,24 @@ namespace Application.Services
             _userRepository = userRepository;
         }
 
-        public User GetUser(int id)
+        public async Task<User> GetUser(int id)
         {
-            return _userRepository.GetUserById(id);
+            return await _userRepository.GetUserByIdAsync(id);
         }
 
-        public void CreateUser(User user)
+        public async Task<User> GetUserByUsernameAsync(string username)
         {
-            _userRepository.AddUser(user);
+            return await _userRepository.GetUserByUsernameAsync(username);
+        }
+
+        public async Task CreateUser(User user)
+        {
+            await _userRepository.AddUserAsync(user);
         }
     }
 }
+
+
+
 
 
